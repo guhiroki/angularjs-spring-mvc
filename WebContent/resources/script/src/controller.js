@@ -1,4 +1,4 @@
-const app = angular.module('loja', []);
+const app = angular.module('appTest', ['ngRoute']);
 //the config method will  register the job who needs to be done on loading.
 // when its a action depending on the url.
 // otherwise is the method called when the action is non-existent on "when"
@@ -11,12 +11,12 @@ app.config(($routeProvider) => {
 });
 
 app.run(($rootScope) => {
-	$rootScope.frutas = ["banana","melancia","melão","maçã","pera"] 
+	$rootScope.fruits = ["banana","melancia","melão","maçã","pera"] 
 });
 app.controller('listController', ['$scope', ($scope) => {
 
 }]);
-app.controller('editController', ['$scope', '$location', '$routeParams', ($scope, $location, $routeParams) => { 
+app.controller('editController', ['$scope', ($scope, $location, $routeParams) => { 
 	$scope.title = 'Edita frutas'; //Title of the page 
 	$scope.fruit = $routeParams; //Getting the fruit name  to edit
 	$scope.fruitIndex = $scope.frutas.indexOf($scope.fruit); //Getting the fruint from the list
@@ -25,7 +25,7 @@ app.controller('editController', ['$scope', '$location', '$routeParams', ($scope
 		$location.path('/'); // Back to index 
 	}; 
 }]);
-app.controller('newCotroller', ['$scope', '$location', ($scope, $location) => {
+app.controller('newController', ['$scope', ($scope, $location) => {
 	$scope.title = 'New fruit';
 	$scope.fruit = '';
 	$scope.save = () => {
@@ -34,11 +34,11 @@ app.controller('newCotroller', ['$scope', '$location', ($scope, $location) => {
 	}; 
 }]);
 
-app.controller('controller', ['$scope', ($scope) => {
-	$scope.user = { myName: 'KappaPride' };
-	
-	$scope.Count = 0;
-	$scope.addNumber = () => { $scope.Count = $scope.Count + 1; };
-	
-	$scope.peaple = ["kappa1", "kappa2", "kappa3", "kappa4"];
-}]);
+//app.controller('controller', ['$scope', ($scope) => {
+//	$scope.user = { myName: 'KappaPride' };
+//	
+//	$scope.Count = 0;
+//	$scope.addNumber = () => { $scope.Count = $scope.Count + 1; };
+//	
+//	$scope.peaple = ["kappa1", "kappa2", "kappa3", "kappa4"];
+//}]);
